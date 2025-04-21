@@ -41,10 +41,10 @@ object HashTableTopic {
     }
   }
 
-  // https://leetcode.com/problems/roman-to-integer/description/
+  // https://leetcode.com/problems/roman-to-integer/
   def romanToInt(s: String): Int = {
     if (s.isEmpty) return 0
-    lazy val romanSymbolsMapping: Map[Char, Int] =
+    lazy val romanSymbolsMapping =
       Map('I' -> 1, 'V' -> 5, 'X' -> 10, 'L' -> 50, 'C' -> 100, 'D' -> 500, 'M' -> 1000)
     var output = 0
     var prev   = 0

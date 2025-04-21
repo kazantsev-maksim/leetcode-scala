@@ -32,10 +32,26 @@ object ArrayTopic {
     var i = 0
     for (j <- 1 until nums.length) {
       if (nums(i) != nums(j)) {
-        i += 1;
+        i += 1
         nums(i) = nums(j)
       }
     }
     i + 1
+  }
+
+  // https://leetcode.com/problems/plus-one/
+  def plusOne(digits: Array[Int]): Array[Int] = {
+    var it = digits.length - 1
+    while (it >= 0) {
+      digits(it) += 1
+      if (digits(it) < 10)
+        return digits
+      if (digits(it) == 10)
+        digits(it) = 0
+      it -= 1
+    }
+    if (digits(0) == 0)
+      return Array(1) ++ digits
+    digits
   }
 }
