@@ -46,16 +46,18 @@ object HashTableTopic {
     if (s.isEmpty) return 0
     lazy val romanSymbolsMapping: Map[Char, Int] =
       Map('I' -> 1, 'V' -> 5, 'X' -> 10, 'L' -> 50, 'C' -> 100, 'D' -> 500, 'M' -> 1000)
-    var num  = 0
-    var prev = 0
-    for (it <- s.length - 1 to 0 by -1) {
-      val curr = romanSymbolsMapping(s(it))
+    var output = 0
+    var prev   = 0
+    var it     = s.length - 1
+    while (it >= 0) {
+      val curr = romanSymbolsMapping(s.charAt(it))
       if (curr >= prev)
-        num += curr
+        output += curr
       else
-        num -= curr
+        output -= curr
       prev = curr
+      it -= 1
     }
-    num
+    output
   }
 }
