@@ -1,8 +1,9 @@
 package com.leetcode.easy
 
-import com.leetcode.easy.ArrayTopic.{ plusOne, removeDuplicates, removeElement }
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should
+
+import com.leetcode.easy.ArrayTopic.{ plusOne, removeDuplicates, removeElement, singleNumber }
 
 final class ArrayTopicSpec extends AnyFlatSpec with should.Matchers {
 
@@ -33,6 +34,16 @@ final class ArrayTopicSpec extends AnyFlatSpec with should.Matchers {
     testCases.foreach {
       case (digits, expected) =>
         assertResult(expected)(plusOne(digits))
+    }
+  }
+
+  it should "singleNumber" in {
+    val testCases =
+      Seq((Array(2, 2, 1), 1), (Array(4, 1, 2, 1, 2), 4), (Array(1), 1))
+
+    testCases.foreach {
+      case (nums, expected) =>
+        assertResult(expected)(singleNumber(nums))
     }
   }
 }

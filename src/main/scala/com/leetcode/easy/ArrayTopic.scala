@@ -54,4 +54,7 @@ object ArrayTopic {
       return Array(1) ++ digits
     digits
   }
+
+  // https://leetcode.com/problems/single-number/
+  def singleNumber(nums: Array[Int]): Int = nums.fold(0)(_ ^ _)
 }
