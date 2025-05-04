@@ -2,6 +2,8 @@ package com.leetcode.easy
 
 import com.leetcode.data_structures.ListNode
 
+import scala.annotation.tailrec
+
 object RecursionTopic {
 
   // https://leetcode.com/problems/remove-duplicates-from-sorted-list/
@@ -26,5 +28,15 @@ object RecursionTopic {
       new ListNode(list1.x, mergeTwoLists(list1.next, list2))
     else
       new ListNode(list2.x, mergeTwoLists(list1, list2.next))
+  }
+
+  // https://leetcode.com/problems/remove-linked-list-elements/
+  def removeElements(head: ListNode, `val`: Int): ListNode = {
+    if (head == null)
+      return head
+    if (head.x == `val`)
+      removeElements(head.next, `val`)
+    else
+      new ListNode(head.x, removeElements(head.next, `val`))
   }
 }
