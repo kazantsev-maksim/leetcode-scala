@@ -1,5 +1,7 @@
 package com.leetcode.easy
 
+import com.leetcode.data_structures.ListNode
+
 import scala.collection.mutable
 
 object HashTableTopic {
@@ -59,5 +61,20 @@ object HashTableTopic {
       it -= 1
     }
     output
+  }
+
+  // https://leetcode.com/problems/linked-list-cycle/
+  def hasCycle(head: ListNode): Boolean = {
+    val visited = mutable.Set[ListNode]()
+    var it      = head
+    while (it != null) {
+      val isCycle = visited.contains(it)
+      if (isCycle) {
+        return true
+      }
+      visited.add(it)
+      it = it.next
+    }
+    false
   }
 }
