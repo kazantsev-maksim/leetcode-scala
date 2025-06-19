@@ -1,6 +1,6 @@
 package com.leetcode.easy
 
-import scala.collection.mutable
+import scala.collection.mutable.ListBuffer
 
 object ArrayTopic {
 
@@ -57,4 +57,24 @@ object ArrayTopic {
 
   // https://leetcode.com/problems/single-number/
   def singleNumber(nums: Array[Int]): Int = nums.fold(0)(_ ^ _)
+
+  // https://leetcode.com/problems/pascals-triangle/
+  def generate(numRows: Int): List[List[Int]] = {
+    if (numRows == 0)
+      return List.empty
+    val ret = ListBuffer[List[Int]]()
+    ret.addOne(List(1))
+    for (i <- 0 until numRows - 1) {
+      val curr = ListBuffer[Int]()
+      val prev = ret(i)
+      curr.addOne(1)
+      for (j <- 1 until prev.length) {
+        val elem = prev(j - 1) + prev(j)
+        curr.addOne(elem)
+      }
+      curr.addOne(1)
+      ret.addOne(curr.result())
+    }
+    ret.result()
+  }
 }
